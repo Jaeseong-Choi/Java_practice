@@ -17,8 +17,8 @@ public class Main {
             
             for (int i = x1; i < x2; i++) {
             	for (int j = y1; j < y2; j++) {
-            		if (arr[i][j] == 1) continue;
-            		arr[i][j]++;
+            		if (arr[i+offset][j+offset] == 1) continue;
+            		arr[i+offset][j+offset]++;
             		cnt++;
             	}
             }
