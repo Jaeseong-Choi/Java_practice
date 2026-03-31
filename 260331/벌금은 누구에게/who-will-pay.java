@@ -15,7 +15,10 @@ public class Main {
         for (int i = 0; i < num; i++) {
         	int a = sc.nextInt();
         	arr[a]++; 
-        	if (arr[a] >= failNum) ans = a;
+        	if (arr[a] >= failNum) {
+        		ans = a;
+        		break;
+        	}
         }
         
         System.out.println(ans);
