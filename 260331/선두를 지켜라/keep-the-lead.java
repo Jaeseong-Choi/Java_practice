@@ -42,7 +42,7 @@ public class Main {
         		if (high == 'b')  cnt++;
         		high = 'a';
         		
-        	} else {
+        	} else if (aArr[i] < bArr[i]) {
         		if (high == 'a') cnt++;
         		high ='b';
 
