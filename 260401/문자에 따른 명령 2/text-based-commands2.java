@@ -22,11 +22,14 @@ public class Main {
         	char c = s.charAt(i);
         	
         	if (c == 'L') {
-        		if (dir == 0) dir = 3; 
-        		dir -= 1; 
+        		if (dir == 0) {
+        			dir = 3; 
+        		} else {
+        			dir -= 1; 
+        		}
         	} else if (c == 'R') {
         		if (dir == 3) dir = 0;
-        		dir += 1; 
+        		else dir += 1; 
         	} else {
         		nx += dx[dir];
         		ny += dy[dir];
