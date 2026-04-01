@@ -7,8 +7,8 @@ public class Main {
         int n = sc.nextInt();
         int m = sc.nextInt(); 
         
-        int[] aArr = new int[1_000_001];
-        int[] bArr = new int[1_000_001];
+        int[] aArr = new int[5_000_001];
+        int[] bArr = new int[5_000_001];
 
         
         int aIdx = 1;
