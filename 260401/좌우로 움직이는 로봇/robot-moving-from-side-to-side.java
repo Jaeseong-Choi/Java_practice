@@ -47,7 +47,7 @@ public class Main {
         	}
         }
         
-        for (int i = bIdx; i < bArr.length; i++) {
+        for (int i = bIdx; i < aArr.length - 1; i++) {
             bArr[i] = bArr[bIdx - 1];
         }
         
