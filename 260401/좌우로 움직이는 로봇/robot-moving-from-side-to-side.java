@@ -9,10 +9,9 @@ public class Main {
         
         int[] aArr = new int[1_000_001];
         int[] bArr = new int[1_000_001];
+
         
-        int offSet = 500_000;
-        
-        int aIdx = 1 + offSet;
+        int aIdx = 1;
         
         for (int i = 0; i < n; i++) {
         	int a =sc.nextInt();
@@ -28,7 +27,11 @@ public class Main {
         	}
         }
         
-        int bIdx = 1 + offSet;
+        for (int i = aIdx; i < aArr.length; i++) {
+            aArr[i] = aArr[aIdx - 1];
+        }
+        
+        int bIdx = 1 ;
         
         for (int i = 0; i < m; i++) {
         	int b =sc.nextInt();
@@ -44,9 +47,14 @@ public class Main {
         	}
         }
         
-        int cnt = 0; 
+        for (int i = bIdx; i < bArr.length; i++) {
+            bArr[i] = bArr[bIdx - 1];
+        }
         
-        for (int i = 1; i < aArr.length - 1; i++) {
+        int cnt = 0; 
+        int maxTime = Math.max(aIdx, bIdx);
+        
+        for (int i = 1; i < maxTime; i++) {
         	if (aArr[i] != bArr[i] && aArr[i+1] == bArr[i+1]) cnt++;
         }
         
