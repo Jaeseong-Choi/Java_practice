@@ -34,7 +34,7 @@ public class Main {
         		cnt++;
         		
         		x = nx;
-        		ny = ny;
+        		y = ny;
         		if (arr[nx][ny] == 1) {
         			cnt++;
         			System.out.println(cnt);
