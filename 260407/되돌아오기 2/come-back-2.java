@@ -4,61 +4,47 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         
-        // 명령 문자열 (최대 100,000자)
+        // 명령 입력 (예: FFFLRL...)
+        if (!sc.hasNext()) return;
         String s = sc.next();
         
-        // 방문한 좌표를 저장할 Set (메모리 효율적)
-        // 좌표를 "x,y" 형태의 문자열로 변환하여 저장합니다.
-        HashSet<String> visited = new HashSet<>();
-        
-        // 방향 설정 (북, 동, 남, 서 순서)
-        // 문제에서 처음 북쪽을 향한다고 했으므로 dir = 0 (북)
-        int[] dx = {-1, 0, 1, 0}; // 행(세로) 변화
-        int[] dy = {0, 1, 0, -1}; // 열(가로) 변화
-        int dir = 0; 
-        
-        // 시작 좌표 (0, 0)
+        // 현재 위치 (0, 0)
         int x = 0;
         int y = 0;
         
-        // 시작점 방문 표시
-        visited.add(x + "," + y);
+        // 경과 시간
+        int time = 0;
         
-        int cnt = 0; // 경과 시간(초)
+        // 방향 설정 (북:0, 동:1, 남:2, 서:3)
+        // 북쪽(N)을 보고 시작하므로 초기 dir은 0
+        int[] dx = {-1, 0, 1, 0}; // 행(세로) 변화량
+        int[] dy = {0, 1, 0, -1}; // 열(가로) 변화량
+        int dir = 0; 
         
         for (int i = 0; i < s.length(); i++) {
             char cmd = s.charAt(i);
             
             if (cmd == 'F') {
-                // 1초 소요하여 한 칸 전진
+                // 1. 전진: 1초 소요 및 좌표 이동
+                time++;
                 x += dx[dir];
                 y += dy[dir];
-                cnt++;
                 
-                // 현재 좌표를 문자열 키로 생성
-                String currentPos = x + "," + y;
-                
-                // 만약 이미 방문한 적이 있는 좌표라면?
-                if (visited.contains(currentPos)) {
-                    System.out.println(cnt); // 그때의 시간을 출력하고 종료
-                    return;
+                // ★ 이동 직후에 (0, 0)인지 확인
+                if (x == 0 && y == 0) {
+                    System.out.println(time);
+                    return; // 처음으로 돌아온 순간이므로 즉시 종료
                 }
                 
-                // 처음 가는 곳이라면 방문 목록에 추가
-                visited.add(currentPos);
-                
             } else if (cmd == 'R') {
-                // 1초 소요하여 오른쪽 90도 회전
-                cnt++;
+                // 2. 오른쪽 회전: 1초 소요 및 방향 변경
+                time++;
                 dir = (dir + 1) % 4;
+                
             } else if (cmd == 'L') {
-                // 1초 소요하여 왼쪽 90도 회전
-                cnt++;
+                // 3. 왼쪽 회전: 1초 소요 및 방향 변경
+                time++;
                 dir = (dir + 3) % 4; // (dir - 1 + 4) % 4와 같음
             }
-        }
-        
-        // 끝까지 움직였는데 재방문이 없으면 -1 출력
-        System.out.println(-1);
-    }
-}
+            
+            // 회전(L, R) 직후에는 좌표가 변하지 않
