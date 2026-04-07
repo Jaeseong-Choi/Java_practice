@@ -30,13 +30,13 @@ public class Main {
         	
         	for (int j = 0; j < a; j++) {
         		int nx = x + dr[dir];
-        		int ny = y + dr[dir]; 
+        		int ny = y + dc[dir]; 
         		cnt++;
         		
         		x = nx;
         		y = ny;
-        		if (arr[nx][ny] == 1) {
-        			cnt++;
+        		
+        		if (arr[x][y] == 1) {
         			System.out.println(cnt);
         			return;
         		}
