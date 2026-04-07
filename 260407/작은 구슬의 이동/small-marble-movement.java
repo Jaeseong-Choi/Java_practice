@@ -1,0 +1,43 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt();
+        int t = sc.nextInt();
+        int[][] arr = new int[n+1][n+1];
+        
+        int[] dc = {0, 0, -1, 1};
+        int[] dr = {1, -1, 0, 0};
+        
+        int x = sc.nextInt();
+        int y = sc.nextInt(); 
+        char c = sc.next().charAt(0);
+        
+        int dir = -1; 
+        if(c == 'U') dir = 0; 
+        else if (c == 'D') dir = 1;
+        else if (c == 'L') dir = 2; 
+        else if (c == 'R') dir = 3;
+        
+        for(int i = 0; i < t; i++) {
+        	 
+        	 int nx = x + dr[dir];
+        	 int ny = y + dc[dir];
+        	 
+        	 if (nx < 1 || ny < 1 || nx > n || ny > n) {
+        		 if(dir == 0) dir = 1; 
+                 else if (dir == 1) dir = 0;
+                 else if (dir == 2) dir = 3; 
+                 else if (dir == 3) dir = 2;
+        	 } else {
+        		 x = nx;
+        		 y = ny;
+        	 }
+        }
+        
+        System.out.println(x + " " + y);
+    }
+}
+
