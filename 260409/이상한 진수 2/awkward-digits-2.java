@@ -14,7 +14,7 @@ public class Main {
         }
         
         
-        int max = Integer.MIN_VALUE;
+        int max = 0;
         
         for (int i = 1; i < a.length(); i++) {
         	if (arr[i] == 1) arr[i] = 0;
