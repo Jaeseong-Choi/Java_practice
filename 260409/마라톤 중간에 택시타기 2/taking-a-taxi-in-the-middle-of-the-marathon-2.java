@@ -15,11 +15,14 @@ public class Main {
         
         int min = Integer.MAX_VALUE;
         
-        int bx = 0;
-        int by = 0;
+        
         
         for (int skip = 1; skip < n - 1; skip++) {
         	int sum = 0; 
+        	
+        	int bx = 0;
+            int by = 0;
+            
         	for (int i = 0; i < n; i++) {
         		if (skip == i) continue; 
         		
