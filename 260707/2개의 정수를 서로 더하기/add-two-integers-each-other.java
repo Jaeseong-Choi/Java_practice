@@ -1,0 +1,17 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        // Please write your code here.
+        Scanner sc = new Scanner(System.in);
+        //b -> a ++, a -> b++
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        a += b;
+        b += a;
+
+        System.out.println(a + " " + b);
+    }
+}
